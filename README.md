@@ -7,3 +7,4 @@ flutter create my_app
 open -a Simulator
 
 - Counter
+- Widgets App
