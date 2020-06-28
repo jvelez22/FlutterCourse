@@ -12,13 +12,42 @@ class CardPage extends StatelessWidget {
         SizedBox(
           height: 20.0,
         ),
-        _cardTipo2()
+        _cardTipo2(),
+        SizedBox(
+          height: 20.0,
+        ),
+        _cardTipo1(),
+        SizedBox(
+          height: 20.0,
+        ),
+        _cardTipo2(),
+        SizedBox(
+          height: 20.0,
+        ),
+        _cardTipo1(),
+        SizedBox(
+          height: 20.0,
+        ),
+        _cardTipo2(),
+        SizedBox(
+          height: 20.0,
+        ),
+        _cardTipo1(),
+        SizedBox(
+          height: 20.0,
+        ),
+        _cardTipo2(),
+        SizedBox(
+          height: 20.0,
+        ),
       ]),
     );
   }
 
   Widget _cardTipo1() {
     return Card(
+      elevation: 10.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Column(children: <Widget>[
         ListTile(
           leading: Icon(Icons.photo_album, color: Colors.blue),
@@ -38,14 +67,14 @@ class CardPage extends StatelessWidget {
   }
 
   Widget _cardTipo2() {
-    return Card(
+    final card = Container(
       child: Column(
         children: <Widget>[
           FadeInImage(
             placeholder: AssetImage('assets/original.gif'),
             image: NetworkImage(
                 'https://www.tom-archer.com/wp-content/uploads/2018/06/milford-sound-night-fine-art-photography-new-zealand.jpg'),
-            height: 250.0,
+            height: 260.0,
             fit: BoxFit.cover,
           ),
           Container(
@@ -55,5 +84,22 @@ class CardPage extends StatelessWidget {
         ],
       ),
     );
+
+    return Container(
+        child: ClipRRect(
+          child: card,
+          borderRadius: BorderRadius.circular(30.0),
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(30.0),
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+                color: Colors.black26,
+                blurRadius: 10.0,
+                spreadRadius: 2.0,
+                offset: Offset(2.0, 10.0))
+          ],
+        ));
   }
 }
