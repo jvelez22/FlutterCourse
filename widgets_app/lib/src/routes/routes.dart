@@ -4,11 +4,13 @@ import 'package:widgets_app/src/pages/animated_container.dart';
 import 'package:widgets_app/src/pages/avatar_page.dart';
 import 'package:widgets_app/src/pages/card_page.dart';
 import 'package:widgets_app/src/pages/home_page.dart';
+import 'package:widgets_app/src/pages/input_page.dart';
 
 Map<String, WidgetBuilder> getApplicationsRoutes() => {
       '/': (BuildContext contex) => HomePage(),
       'alert': (BuildContext context) => AlertPage(),
       'avatar': (BuildContext context) => AvatarPage(),
       'card': (BuildContext context) => CardPage(),
-      'animated_container': (BuildContext context) => AnimatedContainerPage()
+      'animated_container': (BuildContext context) => AnimatedContainerPage(),
+      'inputs': (BuildContext context) => InputPage()
     };
