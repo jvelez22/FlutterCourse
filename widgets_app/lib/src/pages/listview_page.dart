@@ -45,15 +45,19 @@ class _ListPageState extends State<ListPage> {
   }
 
   Widget _crearLista() {
-    return ListView.builder(
-      itemBuilder: (BuildContext context, int index) {
-        final image = _list[index];
-        return FadeInImage(
-            placeholder: AssetImage('assets/original.gif'),
-            image: NetworkImage('https://picsum.photos/500/300/?image=$image'));
-      },
-      itemCount: _list.length,
-      controller: _scrollController,
+    return RefreshIndicator(
+      onRefresh: _loadMainPage,
+      child: ListView.builder(
+        itemBuilder: (BuildContext context, int index) {
+          final image = _list[index];
+          return FadeInImage(
+              placeholder: AssetImage('assets/original.gif'),
+              image:
+                  NetworkImage('https://picsum.photos/500/300/?image=$image'));
+        },
+        itemCount: _list.length,
+        controller: _scrollController,
+      ),
     );
   }
 
@@ -95,5 +99,15 @@ class _ListPageState extends State<ListPage> {
     } else {
       return Container();
     }
+  }
+
+  Future<Null> _loadMainPage() async {
+    Timer(Duration(seconds: 2), () {
+      _list.clear();
+      _lastItem++;
+      _addImages();
+    });
+
+    return Future.delayed(Duration(seconds: 2));
   }
 }
