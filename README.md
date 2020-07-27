@@ -8,3 +8,4 @@ open -a Simulator
 
 - Counter
 - Widgets App
+- Movies App
