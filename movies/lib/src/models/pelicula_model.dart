@@ -69,4 +69,11 @@ class Movie {
     }
     return 'https://image.tmdb.org/t/p/w500/$posterPath';
   }
+
+  getBackgroundImg() {
+    if (backdropPath == null) {
+      return 'https://www.gastronorm.it/open2b/var/products/45/44/0-6525eb42-300-K8V06-Kit-8-x-0.6-l.-plateaux-ronds.jpg';
+    }
+    return 'https://image.tmdb.org/t/p/w500/$backdropPath';
+  }
 }
