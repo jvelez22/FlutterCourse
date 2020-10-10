@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart';
+import 'package:movies/src/models/characters_model.dart';
 import 'package:movies/src/models/pelicula_model.dart';
 
 class MoviesProvider {
@@ -40,6 +41,19 @@ class MoviesProvider {
     _populars.addAll(response);
     popularsSink(_populars);
     isLoading = false;
+  }
+
+  Future<List<Character>> getCast(String movieId) async {
+    final url = Uri.https(_url, '3/movie/$movieId/credits', {
+      'api_key': _apikey,
+      'language': _language,
+    });
+
+    final response = await get(url);
+    final decodeData = json.decode(response.body);
+    final cast = Cast.fromJsonList(decodeData['cast']);
+
+    return cast.characters;
   }
 
   Future<List<Movie>> _processResponse(Uri url) async {
