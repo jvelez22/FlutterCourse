@@ -64,6 +64,13 @@ class MoviesProvider {
     return results.movies;
   }
 
+  Future<List<Movie>> getMovie(String query) async {
+    final url = Uri.https(_url, '3/search/movie',
+        {'api_key': _apikey, 'language': _language, 'query': query});
+
+    return await _processResponse(url);
+  }
+
   void dispose() {
     _popularsStreamController.close();
   }
